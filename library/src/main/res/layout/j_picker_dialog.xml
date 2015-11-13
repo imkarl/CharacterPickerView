@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@android:color/white"
+        android:gravity="center_vertical">
+
+        <Button
+            android:id="@+id/j_btnCancel"
+            android:layout_width="60dp"
+            android:layout_height="34dp"
+            android:background="@android:color/transparent"
+            android:gravity="center"
+            android:text="@string/j_pickerview_cancel"
+            android:textColor="@drawable/j_wheel_timebtn" />
+
+        <Button
+            android:id="@+id/j_btnSubmit"
+            android:layout_width="60dp"
+            android:layout_height="34dp"
+            android:layout_alignParentRight="true"
+            android:background="@android:color/transparent"
+            android:gravity="center"
+            android:text="@string/j_pickerview_submit"
+            android:textColor="@drawable/j_wheel_timebtn" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="#D8D3D3" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <cn.jeesoft.widget.pickerview.CharacterPickerView
+            android:id="@+id/j_optionspicker"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/j_optionspicker"
+            android:layout_alignTop="@id/j_optionspicker"
+            android:background="@drawable/j_bg_above_timepicker" />
+    </RelativeLayout>
+
+</LinearLayout>
