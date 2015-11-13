@@ -7,6 +7,7 @@ import android.graphics.Rect;
 import android.graphics.Typeface;
 import android.os.Handler;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
@@ -289,15 +290,13 @@ public class LoopView extends View {
                     String str = as[j1];
 
                     int zoomTextSize = textSize;
-                    double zoom = ((double) textSize - str.length()) / textSize;
-                    if (str.length() > 15) {
-                        zoomTextSize = (int) (textSize * zoom) + 10;
-                    } else if (str.length() > 6) {
-                        zoomTextSize = (int) (textSize * zoom) - 2;
+                    double zoom = ((double) textSize - str.length()*2) / textSize * 1.2;
+                    zoomTextSize = (int) (textSize * zoom);
+                    if (zoomTextSize < 10) {
+                        zoomTextSize = 10;
                     }
                     paintA.setTextSize(zoomTextSize);
                     paintB.setTextSize(zoomTextSize);
-
 
                     int startX = (int) (n + (getLeft() * 0.5));
 
