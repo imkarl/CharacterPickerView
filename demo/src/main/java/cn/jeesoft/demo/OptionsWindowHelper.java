@@ -33,8 +33,6 @@ public class OptionsWindowHelper {
         CharacterPickerWindow mOptions = new CharacterPickerWindow(activity);
         //初始化选项数据
         setPickerData(mOptions.getPickerView());
-        //设置选择的三级单位
-//        mOptions.setLabels("省", "市", "区");
         //设置默认选中的三级项目
         mOptions.setSelectOptions(0, 0, 0);
         //监听确定选择按钮
