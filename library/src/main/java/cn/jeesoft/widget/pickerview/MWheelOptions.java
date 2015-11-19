@@ -64,7 +64,7 @@ final class MWheelOptions {
                     wv_option2.setCurrentItem(0);
                 }
                 if (!mOptions3Items.isEmpty()) {
-                    wv_option3.setArrayList(mOptions3Items.get(wv_option1.getCurrentItem()).get(item));
+                    wv_option3.setArrayList(mOptions3Items.get(item).get(0));
                     wv_option3.setCurrentItem(0);
                 } else {
                     doItemChange();
