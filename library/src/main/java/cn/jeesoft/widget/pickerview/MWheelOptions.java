@@ -9,7 +9,7 @@ import java.util.List;
  * @version 0.1 king 2015-11
  */
 final class MWheelOptions {
-    private CharacterPickerView view;
+    private final CharacterPickerView view;
     private LoopView wv_option1;
     private LoopView wv_option2;
     private LoopView wv_option3;
