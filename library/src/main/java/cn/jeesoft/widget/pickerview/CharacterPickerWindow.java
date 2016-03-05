@@ -13,9 +13,9 @@ import java.util.List;
  * @version 0.1 king 2015-11
  */
 public class CharacterPickerWindow extends PopupWindow implements View.OnClickListener {
-    private View rootView; // 总的布局
-    private View btnSubmit, btnCancel;
-    private CharacterPickerView pickerView;
+    private final View rootView; // 总的布局
+    private final View btnSubmit, btnCancel;
+    private final CharacterPickerView pickerView;
     private OnOptionsSelectListener optionsSelectListener;
     private static final String TAG_SUBMIT = "submit";
     private static final String TAG_CANCEL = "cancel";
