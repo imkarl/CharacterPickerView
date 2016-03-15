@@ -186,8 +186,8 @@ public class LoopView extends View {
         invalidate();
     }
 
-    public final void setListener(LoopListener LoopListener) {
-        loopListener = LoopListener;
+    public final void setListener(LoopListener loopListener) {
+        this.loopListener = loopListener;
     }
 
     public final void setArrayList(List arraylist) {
@@ -238,7 +238,6 @@ public class LoopView extends View {
             if (mCurrentItem > arrayList.size() - 1) {
                 mCurrentItem = arrayList.size() - 1;
             }
-            // break;
         } else {
             if (mCurrentItem < 0) {
                 mCurrentItem = arrayList.size() + mCurrentItem;
@@ -246,7 +245,6 @@ public class LoopView extends View {
             if (mCurrentItem > arrayList.size() - 1) {
                 mCurrentItem = mCurrentItem - arrayList.size();
             }
-            // continue;
         }
         do {
             int j2 = (int) ((float) totalScrollY % (l * (float) h));

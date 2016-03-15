@@ -21,9 +21,6 @@ public class MainActivity extends AppCompatActivity {
 
         // 用View的方式实现
         showView();
-        // 用PopupWindow的方式实现
-        //showWindow();
-
     }
 
     private void showView() {
