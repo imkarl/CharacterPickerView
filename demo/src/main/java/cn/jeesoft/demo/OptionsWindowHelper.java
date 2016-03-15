@@ -66,19 +66,19 @@ public class OptionsWindowHelper {
 
                 options1Items.add(key1);
 
-                ArrayList options2Items_01 = new ArrayList();
-                List<List<String>> options3Items_01 = new ArrayList<>();
+                ArrayList options2Items01 = new ArrayList();
+                List<List<String>> options3Items01 = new ArrayList<>();
                 for (Map.Entry<String, List<String>> entry2 : value1.entrySet()) {
                     String key2 = entry2.getKey();
                     List<String> value2 = entry2.getValue();
 
-                    options2Items_01.add(key2);
+                    options2Items01.add(key2);
                     Collections.sort(value2);
-                    options3Items_01.add(new ArrayList(value2));
+                    options3Items01.add(new ArrayList(value2));
                 }
-                Collections.sort(options2Items_01);
-                options2Items.add(options2Items_01);
-                options3Items.add(options3Items_01);
+                Collections.sort(options2Items01);
+                options2Items.add(options2Items01);
+                options3Items.add(options3Items01);
             }
             Collections.sort(options1Items);
         }
