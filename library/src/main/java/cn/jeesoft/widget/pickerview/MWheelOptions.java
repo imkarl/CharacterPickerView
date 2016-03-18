@@ -45,9 +45,9 @@ final class MWheelOptions {
     public void setPicker(List<String> options1Items,
                           List<List<String>> options2Items,
                           List<List<List<String>>> options3Items) {
-        this.mOptions1Items = (options1Items == null ? new ArrayList<String>() : options1Items);
-        this.mOptions2Items = (options2Items == null ? new ArrayList<List<String>>() : options2Items);
-        this.mOptions3Items = (options3Items == null ? new ArrayList<List<List<String>>>() : options3Items);
+        this.mOptions1Items = options1Items == null ? new ArrayList<String>() : options1Items;
+        this.mOptions2Items = options2Items == null ? new ArrayList<List<String>>() : options2Items;
+        this.mOptions3Items = options3Items == null ? new ArrayList<List<List<String>>>() : options3Items;
         // 选项1
         wv_option1 = (LoopView) view.findViewById(R.id.j_options1);
         wv_option1.setArrayList(mOptions1Items);// 设置显示数据

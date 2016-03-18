@@ -270,7 +270,6 @@ public class LoopView extends View {
                 }
                 k1++;
             }
-            k1 = (v - g) / 2;
             canvas.drawLine(0.0F, n, v, n, paintC);
             canvas.drawLine(0.0F, o, v, o, paintC);
             int j1 = 0;
@@ -287,7 +286,7 @@ public class LoopView extends View {
 
                     String str = as[j1];
 
-                    int zoomTextSize = textSize;
+                    int zoomTextSize;
                     double zoom = ((double) textSize - str.length()*2) / textSize * 1.2;
                     zoomTextSize = (int) (textSize * zoom);
                     if (zoomTextSize < 10) {
