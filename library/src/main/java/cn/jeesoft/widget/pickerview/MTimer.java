@@ -9,11 +9,11 @@ import java.util.TimerTask;
 
 final class MTimer extends TimerTask {
 
-    int a;
-    int b;
-    final int c;
-    final Timer timer;
-    final LoopView loopView;
+    private int a;
+    private int b;
+    private final int c;
+    private final Timer timer;
+    private final LoopView loopView;
 
     MTimer(LoopView loopview, int i, Timer timer) {
         super();

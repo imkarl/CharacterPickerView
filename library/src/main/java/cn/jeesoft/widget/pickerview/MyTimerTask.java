@@ -12,11 +12,11 @@ import java.util.TimerTask;
 
 final class MyTimerTask extends TimerTask {
 
-    float a;
-    float b;
-    final int c;
-    final Timer timer;
-    final LoopView loopView;
+    private float a;
+    private float b;
+    private final int c;
+    private final Timer timer;
+    private final LoopView loopView;
 
     MyTimerTask(LoopView loopview, int i, Timer timer) {
         super();
