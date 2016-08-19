@@ -26,6 +26,21 @@
 ### 效果图
 ![效果图](./Screenshot/Screenshot_2015-11-13-154813.gif)
 
+##How to
+
+- Step 1. 把 JitPack repository 添加到build.gradle文件中 repositories的末尾:
+```
+repositories {
+    maven { url "https://jitpack.io" }
+}
+```
+- Step 2. 在你的app build.gradle 的 dependencies 中添加依赖
+```
+dependencies {
+	compile 'com.github.imkarl:CharacterPickerView:v0.1'
+}
+```
+
 #### Thanks
 - [Android-PickerView](https://github.com/saiwu-bigkoo/Android-PickerView) 一二三级联动选择器
 - [androidWheelView](https://github.com/weidongjian/androidWheelView/) 仿iOS滚轮控件
