@@ -11,7 +11,7 @@ import android.view.MotionEvent;
 
 final class LoopViewGestureListener extends android.view.GestureDetector.SimpleOnGestureListener {
 
-    final LoopView loopView;
+    private final LoopView loopView;
 
     LoopViewGestureListener(LoopView loopview) {
         super();

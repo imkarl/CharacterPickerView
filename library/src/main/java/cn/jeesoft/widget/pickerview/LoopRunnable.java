@@ -9,7 +9,7 @@ package cn.jeesoft.widget.pickerview;
 
 final class LoopRunnable implements Runnable {
 
-    final LoopView loopView;
+    private final LoopView loopView;
 
     LoopRunnable(LoopView loopview) {
         super();

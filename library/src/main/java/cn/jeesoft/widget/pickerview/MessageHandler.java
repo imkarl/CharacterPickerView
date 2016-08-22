@@ -12,7 +12,7 @@ import android.os.Message;
 
 final class MessageHandler extends Handler {
 
-    final LoopView a;
+    private final LoopView a;
 
     MessageHandler(LoopView loopview) {
         super();
