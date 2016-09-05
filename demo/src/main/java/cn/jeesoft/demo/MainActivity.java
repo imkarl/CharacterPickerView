@@ -11,9 +11,9 @@ import android.widget.RelativeLayout;
 
 import cn.jeesoft.widget.pickerview.CharacterPickerView;
 import cn.jeesoft.widget.pickerview.CharacterPickerWindow;
+import cn.jeesoft.widget.pickerview.OnOptionChangedListener;
 
 public class MainActivity extends AppCompatActivity {
-    private RelativeLayout.LayoutParams layoutParams;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
         RelativeLayout layout = new RelativeLayout(this);
         setContentView(layout);
 
-        layoutParams = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         layoutParams.addRule(RelativeLayout.CENTER_IN_PARENT);
 
         CharacterPickerView pickerView = new CharacterPickerView(this);
@@ -40,9 +40,9 @@ public class MainActivity extends AppCompatActivity {
         OptionsWindowHelper.setPickerData(pickerView);
 
         //设置监听事件
-        pickerView.setOnOptionChangedListener(new CharacterPickerView.OnOptionChangedListener() {
+        pickerView.setOnOptionChangedListener(new OnOptionChangedListener() {
             @Override
-            public void onOptionChanged(CharacterPickerView view, int option1, int option2, int option3) {
+            public void onOptionChanged(int option1, int option2, int option3) {
                 Log.e("test", option1 + "," + option2 + "," + option3);
             }
         });

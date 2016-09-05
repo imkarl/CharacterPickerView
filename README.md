@@ -5,7 +5,15 @@
 可实现单项选择，并支持一二三级联动效果
 高仿iOS的滚轮效果，实现字体大小自适应
 
-### Demo
+### ChangeLog
+
+#### 0.2.0
+- 升级工程编译工具版本
+- 升级3D滚轮控件
+- 完善字体大小自适应
+- 微调选中项改变监听器
+
+### Useage
 
     //选项选择器
     CharacterPickerWindow mOptions = new CharacterPickerWindow(activity);
@@ -14,17 +22,17 @@
     //设置默认选中的三级项目
     mOptions.setSelectOptions(0, 0, 0);
     //监听确定选择按钮
-    mOptions.setOnoptionsSelectListener(new CharacterPickerWindow.OnOptionsSelectListener() {
+    mOptions.setOnoptionsSelectListener(new OnOptionChangedListener() {
         @Override
-        public void onOptionsSelect(int options1, int option2, int options3) {
+        public void onOptionChanged(int options1, int option2, int options3) {
             // TODO 处理选择结果
         }
     });
     mOptions.showAtLocation(v, Gravity.BOTTOM, 0, 0);
-        
 
-### 效果图
-![效果图](./Screenshot/Screenshot_2015-11-13-154813.gif)
+
+### Preview
+![Preview](./Screenshot/Screenshot_2015-11-13-154813.gif)
 
 ##How to
 
@@ -37,7 +45,7 @@ repositories {
 - Step 2. 在你的app build.gradle 的 dependencies 中添加依赖
 ```
 dependencies {
-	compile 'com.github.imkarl:CharacterPickerView:v0.1'
+	compile 'com.github.imkarl:CharacterPickerView:v0.2.0'
 }
 ```
 

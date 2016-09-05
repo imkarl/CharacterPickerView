@@ -5,43 +5,43 @@
     android:background="@android:color/white"
     android:orientation="horizontal">
 
-    <RelativeLayout
+    <LinearLayout
         android:id="@+id/j_layout1"
         android:layout_width="0dip"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:padding="4dip">
-        <cn.jeesoft.widget.pickerview.LoopView
+        android:padding="4dip"
+        android:gravity="center_horizontal">
+        <com.weidongjian.meitu.wheelviewdemo.view.LoopView
             android:id="@+id/j_options1"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true" />
-    </RelativeLayout>
+            android:layout_height="wrap_content" />
+    </LinearLayout>
 
-    <RelativeLayout
+    <LinearLayout
         android:id="@+id/j_layout2"
         android:layout_width="0dip"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:padding="4dip">
-        <cn.jeesoft.widget.pickerview.LoopView
+        android:padding="4dip"
+        android:gravity="center_horizontal">
+        <com.weidongjian.meitu.wheelviewdemo.view.LoopView
             android:id="@+id/j_options2"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true" />
-    </RelativeLayout>
+            android:layout_height="wrap_content" />
+    </LinearLayout>
 
-    <RelativeLayout
+    <LinearLayout
         android:id="@+id/j_layout3"
         android:layout_width="0dip"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:padding="4dip">
-        <cn.jeesoft.widget.pickerview.LoopView
+        android:padding="4dip"
+        android:gravity="center_horizontal">
+        <com.weidongjian.meitu.wheelviewdemo.view.LoopView
             android:id="@+id/j_options3"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true" />
-    </RelativeLayout>
+            android:layout_height="wrap_content" />
+    </LinearLayout>
 
 </LinearLayout>

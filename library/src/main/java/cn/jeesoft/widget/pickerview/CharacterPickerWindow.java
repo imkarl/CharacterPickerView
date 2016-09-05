@@ -16,7 +16,7 @@ public class CharacterPickerWindow extends PopupWindow implements View.OnClickLi
     private final View rootView; // 总的布局
     private final View btnSubmit, btnCancel;
     private final CharacterPickerView pickerView;
-    private OnOptionsSelectListener optionsSelectListener;
+    private OnOptionChangedListener optionsSelectListener;
     private static final String TAG_SUBMIT = "submit";
     private static final String TAG_CANCEL = "cancel";
 
@@ -103,25 +103,17 @@ public class CharacterPickerWindow extends PopupWindow implements View.OnClickLi
     @Override
     public void onClick(View v) {
         String tag = (String) v.getTag();
-        if (tag.equals(TAG_CANCEL)) {
-            dismiss();
-            return;
-        } else {
+        if (!tag.equals(TAG_CANCEL)) {
             if (optionsSelectListener != null) {
                 int[] optionsCurrentItems = pickerView.getCurrentItems();
-                optionsSelectListener.onOptionsSelect(optionsCurrentItems[0], optionsCurrentItems[1], optionsCurrentItems[2]);
+                optionsSelectListener.onOptionChanged(optionsCurrentItems[0], optionsCurrentItems[1], optionsCurrentItems[2]);
             }
-            dismiss();
-            return;
         }
-    }
-
-    public interface OnOptionsSelectListener {
-        public void onOptionsSelect(int options1, int option2, int options3);
+        dismiss();
     }
 
     public void setOnoptionsSelectListener(
-            OnOptionsSelectListener optionsSelectListener) {
+            OnOptionChangedListener optionsSelectListener) {
         this.optionsSelectListener = optionsSelectListener;
     }
 }

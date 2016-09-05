@@ -2,24 +2,20 @@
 // Jad home page: http://www.geocities.com/kpdus/jad.html
 // Decompiler options: braces fieldsfirst space lnc 
 
-package cn.jeesoft.widget.pickerview;
+package com.weidongjian.meitu.wheelviewdemo.view;
 
 // Referenced classes of package com.qingchifan.view:
-//            LoopView, LoopListener
+//            LoopView, OnItemSelectedListener
 
-final class LoopRunnable implements Runnable {
-
+final class OnItemSelectedRunnable implements Runnable {
     final LoopView loopView;
 
-    LoopRunnable(LoopView loopview) {
-        super();
+    OnItemSelectedRunnable(LoopView loopview) {
         loopView = loopview;
-
     }
 
+    @Override
     public final void run() {
-        LoopListener listener = loopView.loopListener;
-        int i = LoopView.getSelectItem(loopView);
-        listener.onItemSelect(i);
+        loopView.onItemSelectedListener.onItemSelected(loopView.getSelectedItem());
     }
 }

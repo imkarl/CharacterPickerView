@@ -2,13 +2,16 @@ package cn.jeesoft.widget.pickerview;
 
 import android.view.View;
 
+import com.weidongjian.meitu.wheelviewdemo.view.LoopView;
+import com.weidongjian.meitu.wheelviewdemo.view.OnItemSelectedListener;
+
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * @version 0.1 king 2015-11
  */
-final class MWheelOptions {
+final class WheelOptions {
     private final CharacterPickerView view;
     private LoopView wv_option1;
     private LoopView wv_option2;
@@ -17,19 +20,18 @@ final class MWheelOptions {
     private List<String> mOptions1Items;
     private List<List<String>> mOptions2Items;
     private List<List<List<String>>> mOptions3Items;
-    private CharacterPickerView.OnOptionChangedListener mOnOptionChangedListener;
+    private OnOptionChangedListener mOnOptionChangedListener;
 
     public View getView() {
         return view;
     }
 
-    public MWheelOptions(CharacterPickerView view) {
+    public WheelOptions(CharacterPickerView view) {
         super();
         this.view = view;
     }
 
-    public void setOnOptionChangedListener(
-            CharacterPickerView.OnOptionChangedListener listener) {
+    public void setOnOptionChangedListener(OnOptionChangedListener listener) {
         this.mOnOptionChangedListener = listener;
     }
 
@@ -50,45 +52,51 @@ final class MWheelOptions {
         this.mOptions3Items = options3Items == null ? new ArrayList<List<List<String>>>() : options3Items;
         // 选项1
         wv_option1 = (LoopView) view.findViewById(R.id.j_options1);
-        wv_option1.setArrayList(mOptions1Items);// 设置显示数据
+        wv_option1.setItems(mOptions1Items);// 设置显示数据
         wv_option1.setCurrentItem(0);// 初始化时显示的数据
         //设置是否循环播放
         wv_option1.setNotLoop();
 
         //滚动监听
-        wv_option1.setListener(new LoopListener() {
+        wv_option1.setListener(new OnItemSelectedListener() {
             @Override
-            public void onItemSelect(int item) {
-                if (!mOptions2Items.isEmpty()) {
-                    wv_option2.setArrayList(mOptions2Items.get(item));
-                    wv_option2.setCurrentItem(0);
-                }
-                if (!mOptions3Items.isEmpty()) {
-                    wv_option3.setArrayList(mOptions3Items.get(item).get(0));
-                    wv_option3.setCurrentItem(0);
-                } else {
+            public void onItemSelected(int index) {
+                if (mOptions2Items.isEmpty()) {
                     doItemChange();
+                    return;
                 }
+
+                wv_option2.setItems(mOptions2Items.get(index));
+                wv_option2.setCurrentItem(0);
+
+                if (mOptions3Items.isEmpty()) {
+                    doItemChange();
+                    return;
+                }
+
+                wv_option3.setItems(mOptions3Items.get(index).get(0));
+                wv_option3.setCurrentItem(0);
             }
         });
 
         // 选项2
         wv_option2 = (LoopView) view.findViewById(R.id.j_options2);
         if (!mOptions2Items.isEmpty()) {
-            wv_option2.setArrayList(mOptions2Items.get(0));// 设置显示数据
+            wv_option2.setItems(mOptions2Items.get(0));// 设置显示数据
             wv_option2.setCurrentItem(0);// 初始化时显示的数据
             //设置是否循环播放
             wv_option2.setNotLoop();
             //滚动监听
-            wv_option2.setListener(new LoopListener() {
+            wv_option2.setListener(new OnItemSelectedListener() {
                 @Override
-                public void onItemSelect(int item) {
-                    if (!mOptions3Items.isEmpty()) {
-                        wv_option3.setArrayList(mOptions3Items.get(wv_option1.getCurrentItem()).get(item));
-                        wv_option3.setCurrentItem(0);
-                    } else {
+                public void onItemSelected(int index) {
+                    if (mOptions3Items.isEmpty()) {
                         doItemChange();
+                        return;
                     }
+
+                    wv_option3.setItems(mOptions3Items.get(wv_option1.getSelectedItem()).get(index));
+                    wv_option3.setCurrentItem(0);
                 }
             });
         }
@@ -96,14 +104,14 @@ final class MWheelOptions {
         // 选项3
         wv_option3 = (LoopView) view.findViewById(R.id.j_options3);
         if (!mOptions3Items.isEmpty()) {
-            wv_option3.setArrayList(mOptions3Items.get(0).get(0));// 设置显示数据
+            wv_option3.setItems(mOptions3Items.get(0).get(0));// 设置显示数据
             wv_option3.setCurrentItem(0);// 初始化时显示的数据
             //设置是否循环播放
             wv_option3.setNotLoop();
             //滚动监听
-            wv_option3.setListener(new LoopListener() {
+            wv_option3.setListener(new OnItemSelectedListener() {
                 @Override
-                public void onItemSelect(int item) {
+                public void onItemSelected(int index) {
                     doItemChange();
                 }
             });
@@ -122,10 +130,10 @@ final class MWheelOptions {
      */
     private void doItemChange() {
         if (mOnOptionChangedListener != null) {
-            int option1 = wv_option1.getCurrentItem();
-            int option2 = wv_option2.getCurrentItem();
-            int option3 = wv_option3.getCurrentItem();
-            mOnOptionChangedListener.onOptionChanged(view, option1, option2, option3);
+            int option1 = wv_option1.getSelectedItem();
+            int option2 = wv_option2.getSelectedItem();
+            int option3 = wv_option3.getSelectedItem();
+            mOnOptionChangedListener.onOptionChanged(option1, option2, option3);
         }
     }
 
@@ -135,9 +143,9 @@ final class MWheelOptions {
      * @param cyclic
      */
     public void setCyclic(boolean cyclic) {
-        wv_option1.setCyclic(cyclic);
-        wv_option2.setCyclic(cyclic);
-        wv_option3.setCyclic(cyclic);
+        wv_option1.setLoop(cyclic);
+        wv_option2.setLoop(cyclic);
+        wv_option3.setLoop(cyclic);
     }
 
     /**
@@ -147,9 +155,9 @@ final class MWheelOptions {
      */
     public int[] getCurrentItems() {
         int[] currentItems = new int[3];
-        currentItems[0] = wv_option1.getCurrentItem();
-        currentItems[1] = wv_option2.getCurrentItem();
-        currentItems[2] = wv_option3.getCurrentItem();
+        currentItems[0] = wv_option1.getSelectedItem();
+        currentItems[1] = wv_option2.getSelectedItem();
+        currentItems[2] = wv_option3.getSelectedItem();
         return currentItems;
     }
 

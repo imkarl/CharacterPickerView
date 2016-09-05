@@ -16,11 +16,7 @@ import java.util.List;
  */
 public class CharacterPickerView extends FrameLayout {
 
-    public static interface OnOptionChangedListener {
-        public void onOptionChanged(CharacterPickerView view, int option1, int option2, int option3);
-    }
-
-    private MWheelOptions wheelOptions;
+    private WheelOptions wheelOptions;
 
     public CharacterPickerView(Context context) {
         super(context);
@@ -45,7 +41,7 @@ public class CharacterPickerView extends FrameLayout {
 
     private void init(Context context) {
         View.inflate(context, R.layout.j_picker_items, this);
-        wheelOptions = new MWheelOptions(this);
+        wheelOptions = new WheelOptions(this);
     }
 
 

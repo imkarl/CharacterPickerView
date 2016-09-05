@@ -2,11 +2,9 @@
 // Jad home page: http://www.geocities.com/kpdus/jad.html
 // Decompiler options: braces fieldsfirst space lnc 
 
-package cn.jeesoft.widget.pickerview;
+package com.weidongjian.meitu.wheelviewdemo.view;
 
 
-public interface LoopListener
-{
-
-    public abstract void onItemSelect(int item);
+public interface OnItemSelectedListener {
+    void onItemSelected(int index);
 }

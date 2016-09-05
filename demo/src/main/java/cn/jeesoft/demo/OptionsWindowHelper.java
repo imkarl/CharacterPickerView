@@ -9,6 +9,7 @@ import java.util.Map;
 
 import cn.jeesoft.widget.pickerview.CharacterPickerView;
 import cn.jeesoft.widget.pickerview.CharacterPickerWindow;
+import cn.jeesoft.widget.pickerview.OnOptionChangedListener;
 
 /**
  * 地址选择器
@@ -21,8 +22,8 @@ public class OptionsWindowHelper {
     private static List<List<String>> options2Items = null;
     private static List<List<List<String>>> options3Items = null;
 
-    public static interface OnOptionsSelectListener {
-        public void onOptionsSelect(String province, String city, String area);
+    public interface OnOptionsSelectListener {
+        void onOptionsSelect(String province, String city, String area);
     }
 
     private OptionsWindowHelper() {
@@ -36,13 +37,13 @@ public class OptionsWindowHelper {
         //设置默认选中的三级项目
         mOptions.setSelectOptions(0, 0, 0);
         //监听确定选择按钮
-        mOptions.setOnoptionsSelectListener(new CharacterPickerWindow.OnOptionsSelectListener() {
+        mOptions.setOnoptionsSelectListener(new OnOptionChangedListener() {
             @Override
-            public void onOptionsSelect(int options1, int option2, int options3) {
+            public void onOptionChanged(int option1, int option2, int option3) {
                 if (listener != null) {
-                    String province = options1Items.get(options1);
-                    String city = options2Items.get(options1).get(option2);
-                    String area = options3Items.get(options1).get(option2).get(options3);
+                    String province = options1Items.get(option1);
+                    String city = options2Items.get(option1).get(option2);
+                    String area = options3Items.get(option1).get(option2).get(option3);
                     listener.onOptionsSelect(province, city, area);
                 }
             }
@@ -55,9 +56,9 @@ public class OptionsWindowHelper {
      */
     public static void setPickerData(CharacterPickerView view) {
         if (options1Items == null) {
-            options1Items = new ArrayList();
+            options1Items = new ArrayList<>();
             options2Items = new ArrayList<>();
-            options3Items = new ArrayList();
+            options3Items = new ArrayList<>();
 
             final Map<String, Map<String, List<String>>> allCitys = ArrayDataDemo.getAll();
             for (Map.Entry<String, Map<String, List<String>>> entry1 : allCitys.entrySet()) {
@@ -66,7 +67,7 @@ public class OptionsWindowHelper {
 
                 options1Items.add(key1);
 
-                ArrayList options2Items01 = new ArrayList();
+                List<String> options2Items01 = new ArrayList<>();
                 List<List<String>> options3Items01 = new ArrayList<>();
                 for (Map.Entry<String, List<String>> entry2 : value1.entrySet()) {
                     String key2 = entry2.getKey();
@@ -74,7 +75,7 @@ public class OptionsWindowHelper {
 
                     options2Items01.add(key2);
                     Collections.sort(value2);
-                    options3Items01.add(new ArrayList(value2));
+                    options3Items01.add(new ArrayList<>(value2));
                 }
                 Collections.sort(options2Items01);
                 options2Items.add(options2Items01);
