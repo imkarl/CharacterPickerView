@@ -1,19 +1,11 @@
-# CharacterPickerView
-可实现三级联动的选择器，高仿iOS的滚轮控件，字体大小自适应
-
-### 仿iOS的PickerView控件
+## 仿iOS的PickerView控件
 可实现单项选择，并支持一二三级联动效果
 高仿iOS的滚轮效果，实现字体大小自适应
 
-### ChangeLog
+## Preview
+![Preview](./Screenshot/Screenshot_2015-11-13-154813.gif)
 
-#### 0.2.0
-- 升级工程编译工具版本
-- 升级3D滚轮控件
-- 完善字体大小自适应
-- 微调选中项改变监听器
-
-### Useage
+## Useage
 
     //选项选择器
     CharacterPickerWindow mOptions = new CharacterPickerWindow(activity);
@@ -30,11 +22,7 @@
     });
     mOptions.showAtLocation(v, Gravity.BOTTOM, 0, 0);
 
-
-### Preview
-![Preview](./Screenshot/Screenshot_2015-11-13-154813.gif)
-
-##How to
+## How to
 
 - Step 1. 把 JitPack repository 添加到build.gradle文件中 repositories的末尾:
 ```
@@ -48,6 +36,14 @@ dependencies {
 	compile 'com.github.imkarl:CharacterPickerView:v0.2.0'
 }
 ```
+
+## ChangeLog
+
+#### 0.2.0
+- 升级工程编译工具版本
+- 升级3D滚轮控件
+- 完善字体大小自适应
+- 微调选中项改变监听器
 
 #### Thanks
 - [Android-PickerView](https://github.com/saiwu-bigkoo/Android-PickerView) 一二三级联动选择器
