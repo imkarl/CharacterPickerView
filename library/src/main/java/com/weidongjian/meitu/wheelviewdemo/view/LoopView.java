@@ -71,7 +71,6 @@ public class LoopView extends View {
     int itemsVisible;
 
     int measuredHeight;
-    int measuredWidth;
     int paddingLeft = 0;
     int paddingRight = 0;
 
@@ -156,7 +155,6 @@ public class LoopView extends View {
         halfCircumference = (int) (maxTextHeight * lineSpacingMultiplier * (itemsVisible - 1));
         measuredHeight = (int) ((halfCircumference * 2) / Math.PI);
         radius = (int) (halfCircumference / Math.PI);
-        measuredWidth = maxTextWidth + paddingLeft + paddingRight;
         firstLineY = (int) ((measuredHeight - lineSpacingMultiplier * maxTextHeight) / 2.0F);
         secondLineY = (int) ((measuredHeight + lineSpacingMultiplier * maxTextHeight) / 2.0F);
         if (initPosition == -1) {
@@ -337,8 +335,8 @@ public class LoopView extends View {
             }
             k1++;
         }
-        canvas.drawLine(0.0F, firstLineY, measuredWidth, firstLineY, paintIndicator);
-        canvas.drawLine(0.0F, secondLineY, measuredWidth, secondLineY, paintIndicator);
+        canvas.drawLine(0.0F, firstLineY, getWidth(), firstLineY, paintIndicator);
+        canvas.drawLine(0.0F, secondLineY, getWidth(), secondLineY, paintIndicator);
 
         final int itemWidth = ((View)getParent()).getWidth();
 
@@ -369,31 +367,31 @@ public class LoopView extends View {
                 if (translateY <= firstLineY && maxTextHeight + translateY >= firstLineY) {
                     // 条目经过第一条线
                     canvas.save();
-                    canvas.clipRect(0, 0, measuredWidth, firstLineY - translateY);
+                    canvas.clipRect(0, 0, getWidth(), firstLineY - translateY);
                     canvas.drawText(text, getTextX(text, paintOuterText, tempRect), maxTextHeight, paintOuterText);
                     canvas.restore();
                     canvas.save();
-                    canvas.clipRect(0, firstLineY - translateY, measuredWidth, (int) (itemHeight));
+                    canvas.clipRect(0, firstLineY - translateY, getWidth(), (int) (itemHeight));
                     canvas.drawText(text, getTextX(text, paintCenterText, tempRect), maxTextHeight, paintCenterText);
                     canvas.restore();
                 } else if (translateY <= secondLineY && maxTextHeight + translateY >= secondLineY) {
                     // 条目经过第二条线
                     canvas.save();
-                    canvas.clipRect(0, 0, measuredWidth, secondLineY - translateY);
+                    canvas.clipRect(0, 0, getWidth(), secondLineY - translateY);
                     canvas.drawText(text, getTextX(text, paintCenterText, tempRect), maxTextHeight, paintCenterText);
                     canvas.restore();
                     canvas.save();
-                    canvas.clipRect(0, secondLineY - translateY, measuredWidth, (int) (itemHeight));
+                    canvas.clipRect(0, secondLineY - translateY, getWidth(), (int) (itemHeight));
                     canvas.drawText(text, getTextX(text, paintOuterText, tempRect), maxTextHeight, paintOuterText);
                     canvas.restore();
                 } else if (translateY >= firstLineY && maxTextHeight + translateY <= secondLineY) {
                     // 中间条目
-                    canvas.clipRect(0, 0, measuredWidth, (int) (itemHeight));
+                    canvas.clipRect(0, 0, getWidth(), (int) (itemHeight));
                     canvas.drawText(text, getTextX(text, paintCenterText, tempRect), maxTextHeight, paintCenterText);
                     selectedItem = items.indexOf(text);
                 } else {
                     // 其他条目
-                    canvas.clipRect(0, 0, measuredWidth, (int) (itemHeight));
+                    canvas.clipRect(0, 0, getWidth(), (int) (itemHeight));
                     canvas.drawText(text, getTextX(text, paintOuterText, tempRect), maxTextHeight, paintOuterText);
                 }
                 canvas.restore();
@@ -407,15 +405,13 @@ public class LoopView extends View {
         paint.getTextBounds(a, 0, a.length(), rect);
         // 获取到的是实际文字宽度
         int textWidth = rect.width();
-        // 转换成绘制文字宽度
-        textWidth *= scaleX;
-        return (measuredWidth - textWidth) / 2;
+        return (getWidth() - textWidth) / 2;
     }
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         remeasure();
-        setMeasuredDimension(measuredWidth, measuredHeight);
+        setMeasuredDimension(getDefaultSize(getSuggestedMinimumWidth(), widthMeasureSpec), measuredHeight);
     }
 
     @Override

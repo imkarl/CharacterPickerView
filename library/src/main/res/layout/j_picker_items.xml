@@ -14,8 +14,8 @@
         android:gravity="center_horizontal">
         <com.weidongjian.meitu.wheelviewdemo.view.LoopView
             android:id="@+id/j_options1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
     </LinearLayout>
 
     <LinearLayout
@@ -27,8 +27,8 @@
         android:gravity="center_horizontal">
         <com.weidongjian.meitu.wheelviewdemo.view.LoopView
             android:id="@+id/j_options2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
     </LinearLayout>
 
     <LinearLayout
@@ -40,8 +40,8 @@
         android:gravity="center_horizontal">
         <com.weidongjian.meitu.wheelviewdemo.view.LoopView
             android:id="@+id/j_options3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
     </LinearLayout>
 
 </LinearLayout>
