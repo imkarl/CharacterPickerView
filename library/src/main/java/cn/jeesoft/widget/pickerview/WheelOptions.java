@@ -61,6 +61,9 @@ final class WheelOptions {
         wv_option1.setListener(new OnItemSelectedListener() {
             @Override
             public void onItemSelected(int index) {
+                if (index == -1) {
+                    return;
+                }
                 if (mOptions2Items.isEmpty()) {
                     doItemChange();
                     return;
@@ -90,6 +93,9 @@ final class WheelOptions {
             wv_option2.setListener(new OnItemSelectedListener() {
                 @Override
                 public void onItemSelected(int index) {
+                    if (index == -1) {
+                        return;
+                    }
                     if (mOptions3Items.isEmpty()) {
                         doItemChange();
                         return;
