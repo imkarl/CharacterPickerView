@@ -1,4 +1,7 @@
 ## 仿iOS的PickerView控件
+
+[![](https://jitpack.io/v/ImKarl/CharacterPickerView.svg)](https://jitpack.io/#ImKarl/CharacterPickerView)
+
 可实现单项选择，并支持一二三级联动效果
 高仿iOS的滚轮效果，实现字体大小自适应
 
