@@ -101,8 +101,14 @@ final class WheelOptions {
                         return;
                     }
 
-                    wv_option3.setItems(mOptions3Items.get(wv_option1.getSelectedItem()).get(index));
-                    wv_option3.setCurrentItem(0);
+                    if (wv_option1.getSelectedItem() < mOptions3Items.size()) {
+                        List<List<String>> allItems3 = mOptions3Items.get(wv_option1.getSelectedItem());
+                        if (index >= allItems3.size()) {
+                            index = 0;
+                        }
+                        wv_option3.setItems(allItems3.get(index));
+                        wv_option3.setCurrentItem(0);
+                    }
                 }
             });
         }
