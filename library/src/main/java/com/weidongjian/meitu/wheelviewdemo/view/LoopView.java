@@ -7,7 +7,6 @@ import android.graphics.Rect;
 import android.graphics.Typeface;
 import android.os.Handler;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
@@ -146,7 +145,7 @@ public class LoopView extends View {
     }
 
     private void remeasure() {
-        if (items == null) {
+        if (items == null || items.isEmpty()) {
             return;
         }
 
@@ -289,7 +288,7 @@ public class LoopView extends View {
 
     @Override
     protected void onDraw(Canvas canvas) {
-        if (items == null) {
+        if (items == null || items.isEmpty()) {
             return;
         }
 
