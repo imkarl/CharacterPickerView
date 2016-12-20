@@ -36,11 +36,17 @@ repositories {
 - Step 2. 在你的app build.gradle 的 dependencies 中添加依赖
 ```
 dependencies {
-	compile 'com.github.imkarl:CharacterPickerView:v0.2.3'
+	compile 'com.github.imkarl:CharacterPickerView:v0.2.4'
 }
 ```
 
 ## ChangeLog
+
+#### 0.2.4
+- 修复部分情况下选项显示宽度变小的bug
+- 修复一二级同时滑动时，出现index=-1导致程序崩溃
+- 修复三级同时滑动时，偶然出现的数组越界
+- 增加LoopView.items的空数据判断
 
 #### 0.2.0
 - 升级工程编译工具版本
