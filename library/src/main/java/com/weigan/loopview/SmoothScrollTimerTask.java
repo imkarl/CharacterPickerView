@@ -2,11 +2,9 @@
 // Jad home page: http://www.geocities.com/kpdus/jad.html
 // Decompiler options: braces fieldsfirst space lnc 
 
-package com.weidongjian.meitu.wheelviewdemo.view;
+package com.weigan.loopview;
 
-import java.util.TimerTask;
-
-final class SmoothScrollTimerTask extends TimerTask {
+final class SmoothScrollTimerTask implements Runnable {
 
     int realTotalOffset;
     int realOffset;

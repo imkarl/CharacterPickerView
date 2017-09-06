@@ -12,10 +12,10 @@
         android:layout_weight="1"
         android:padding="4dip"
         android:gravity="center_horizontal">
-        <com.weidongjian.meitu.wheelviewdemo.view.LoopView
+        <com.weigan.loopview.LoopView
             android:id="@+id/j_options1"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="wrap_content" />
     </LinearLayout>
 
     <LinearLayout
@@ -25,10 +25,10 @@
         android:layout_weight="1"
         android:padding="4dip"
         android:gravity="center_horizontal">
-        <com.weidongjian.meitu.wheelviewdemo.view.LoopView
+        <com.weigan.loopview.LoopView
             android:id="@+id/j_options2"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="wrap_content" />
     </LinearLayout>
 
     <LinearLayout
@@ -38,10 +38,10 @@
         android:layout_weight="1"
         android:padding="4dip"
         android:gravity="center_horizontal">
-        <com.weidongjian.meitu.wheelviewdemo.view.LoopView
+        <com.weigan.loopview.LoopView
             android:id="@+id/j_options3"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="wrap_content" />
     </LinearLayout>
 
 </LinearLayout>

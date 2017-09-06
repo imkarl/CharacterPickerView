@@ -2,14 +2,15 @@ package cn.jeesoft.widget.pickerview;
 
 import android.view.View;
 
-import com.weidongjian.meitu.wheelviewdemo.view.LoopView;
-import com.weidongjian.meitu.wheelviewdemo.view.OnItemSelectedListener;
+import com.weigan.loopview.LoopView;
+import com.weigan.loopview.OnItemSelectedListener;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * @version 0.1 king 2015-11
+ * @version 0.2 imkarl 2017-9
  */
 final class WheelOptions {
     private final CharacterPickerView view;
@@ -53,7 +54,6 @@ final class WheelOptions {
         // 选项1
         wv_option1 = (LoopView) view.findViewById(R.id.j_options1);
         wv_option1.setItems(mOptions1Items);// 设置显示数据
-        wv_option1.setCurrentItem(0);// 初始化时显示的数据
         //设置是否循环播放
         wv_option1.setNotLoop();
 
@@ -70,15 +70,7 @@ final class WheelOptions {
                 }
 
                 wv_option2.setItems(mOptions2Items.get(index));
-                wv_option2.setCurrentItem(0);
-
-                if (mOptions3Items.isEmpty()) {
-                    doItemChange();
-                    return;
-                }
-
-                wv_option3.setItems(mOptions3Items.get(index).get(0));
-                wv_option3.setCurrentItem(0);
+                wv_option2.setCurrentPosition(0);
             }
         });
 
@@ -86,7 +78,6 @@ final class WheelOptions {
         wv_option2 = (LoopView) view.findViewById(R.id.j_options2);
         if (!mOptions2Items.isEmpty()) {
             wv_option2.setItems(mOptions2Items.get(0));// 设置显示数据
-            wv_option2.setCurrentItem(0);// 初始化时显示的数据
             //设置是否循环播放
             wv_option2.setNotLoop();
             //滚动监听
@@ -107,7 +98,7 @@ final class WheelOptions {
                             index = 0;
                         }
                         wv_option3.setItems(allItems3.get(index));
-                        wv_option3.setCurrentItem(0);
+                        wv_option3.setCurrentPosition(0);
                     }
                 }
             });
@@ -117,7 +108,7 @@ final class WheelOptions {
         wv_option3 = (LoopView) view.findViewById(R.id.j_options3);
         if (!mOptions3Items.isEmpty()) {
             wv_option3.setItems(mOptions3Items.get(0).get(0));// 设置显示数据
-            wv_option3.setCurrentItem(0);// 初始化时显示的数据
+            wv_option3.setCurrentPosition(0);// 初始化时显示的数据
             //设置是否循环播放
             wv_option3.setNotLoop();
             //滚动监听
@@ -134,7 +125,8 @@ final class WheelOptions {
         if (mOptions3Items.isEmpty())
             view.findViewById(R.id.j_layout3).setVisibility(View.GONE);
 
-        setCurrentItems(0, 0, 0);
+        // 初始化时显示的数据
+        setCurrentPositions(0, 0, 0);
     }
 
     /**
@@ -151,8 +143,6 @@ final class WheelOptions {
 
     /**
      * 设置是否循环滚动
-     *
-     * @param cyclic
      */
     public void setCyclic(boolean cyclic) {
         wv_option1.setLoop(cyclic);
@@ -160,11 +150,7 @@ final class WheelOptions {
         wv_option3.setLoop(cyclic);
     }
 
-    /**
-     * 返回当前选中的结果对应的位置数组 因为支持三级联动效果，分三个级别索引，0，1，2
-     *
-     * @return
-     */
+    @Deprecated
     public int[] getCurrentItems() {
         int[] currentItems = new int[3];
         currentItems[0] = wv_option1.getSelectedItem();
@@ -173,9 +159,36 @@ final class WheelOptions {
         return currentItems;
     }
 
-    public void setCurrentItems(int option1, int option2, int option3) {
-        wv_option1.setCurrentItem(option1);
-        wv_option2.setCurrentItem(option2);
-        wv_option3.setCurrentItem(option3);
+    /**
+     * 返回当前选中的结果对应的位置数组 因为支持三级联动效果，分三个级别索引，0，1，2
+     */
+    public int[] getCurrentPositions() {
+        int[] currentItems = new int[3];
+        currentItems[0] = wv_option1.getSelectedItem();
+        currentItems[1] = wv_option2.getSelectedItem();
+        currentItems[2] = wv_option3.getSelectedItem();
+        return currentItems;
+    }
+
+    public void setCurrentPositions(int option1, int option2, int option3) {
+        if (option1 < 0) {
+            option1 = 0;
+        }
+        if (option2 < 0) {
+            option2 = 0;
+        }
+        if (option3 < 0) {
+            option3 = 0;
+        }
+
+        if (wv_option1.getSelectedItem() == -1) {
+            wv_option1.setInitPosition(option1);
+            wv_option2.setInitPosition(option2);
+            wv_option3.setInitPosition(option3);
+        } else {
+            wv_option1.setCurrentPosition(option1);
+            wv_option2.setCurrentPosition(option2);
+            wv_option3.setCurrentPosition(option3);
+        }
     }
 }

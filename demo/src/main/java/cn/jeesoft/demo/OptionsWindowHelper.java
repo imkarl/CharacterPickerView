@@ -1,6 +1,7 @@
 package cn.jeesoft.demo;
 
 import android.app.Activity;
+import android.text.TextUtils;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -15,6 +16,7 @@ import cn.jeesoft.widget.pickerview.OnOptionChangedListener;
  * 地址选择器
  *
  * @version 0.1 king 2015-10
+ * @version 0.2 imkarl 2017-9
  */
 public class OptionsWindowHelper {
 
@@ -35,7 +37,7 @@ public class OptionsWindowHelper {
         //初始化选项数据
         setPickerData(mOptions.getPickerView());
         //设置默认选中的三级项目
-        mOptions.setSelectOptions(0, 0, 0);
+        mOptions.setCurrentPositions(0, 0, 0);
         //监听确定选择按钮
         mOptions.setOnoptionsSelectListener(new OnOptionChangedListener() {
             @Override
@@ -87,6 +89,24 @@ public class OptionsWindowHelper {
         //三级联动效果
         view.setPicker(options1Items, options2Items, options3Items);
 
+    }
+
+    public static void setCurrentPositions(CharacterPickerWindow window, String province, String city, String area) {
+        int option1 = indexOf(options1Items, province);
+        int option2 = option1>=0 ? indexOf(options2Items.get(option1), city) : -1;
+        int option3 = option2>=0 ? indexOf(options3Items.get(option1).get(option2), area) : -1;
+
+        window.setCurrentPositions(option1, option2, option3);
+    }
+
+    private static int indexOf(List<String> data, String key) {
+        if (data == null || data.isEmpty()) {
+            return -1;
+        }
+        if (TextUtils.isEmpty(key)) {
+            return -1;
+        }
+        return data.indexOf(key);
     }
 
 }

@@ -1,6 +1,7 @@
 package cn.jeesoft.widget.pickerview;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.graphics.drawable.BitmapDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +12,7 @@ import java.util.List;
 
 /**
  * @version 0.1 king 2015-11
+ * @version 0.2 imkarl 2017-9
  */
 public class CharacterPickerWindow extends PopupWindow implements View.OnClickListener {
     private final View rootView; // 总的布局
@@ -23,9 +25,10 @@ public class CharacterPickerWindow extends PopupWindow implements View.OnClickLi
     public CharacterPickerWindow(Context context) {
         super(context);
         this.setWidth(ViewGroup.LayoutParams.MATCH_PARENT);
-        this.setHeight(ViewGroup.LayoutParams.WRAP_CONTENT);
+        this.setHeight(dp2Px(280));
         this.setBackgroundDrawable(new BitmapDrawable());// 这样设置才能点击屏幕外dismiss窗口
         this.setOutsideTouchable(true);
+        this.setFocusable(true);
         this.setAnimationStyle(R.style.j_timepopwindow_anim_style);
 
         LayoutInflater mLayoutInflater = LayoutInflater.from(context);
@@ -40,6 +43,11 @@ public class CharacterPickerWindow extends PopupWindow implements View.OnClickLi
         // ----转轮
         pickerView = (CharacterPickerView) rootView.findViewById(R.id.j_optionspicker);
         setContentView(rootView);
+    }
+
+    private static int dp2Px(float dp) {
+        final float scale = Resources.getSystem().getDisplayMetrics().density;
+        return (int) (dp * scale + 0.5f);
     }
 
     public CharacterPickerView getPickerView() {
@@ -63,38 +71,51 @@ public class CharacterPickerWindow extends PopupWindow implements View.OnClickLi
 
     /**
      * 设置选中的item位置
-     *
-     * @param option1
      */
+    @Deprecated
     public void setSelectOptions(int option1) {
         pickerView.setCurrentItems(option1, 0, 0);
     }
 
     /**
      * 设置选中的item位置
-     *
-     * @param option1
-     * @param option2
      */
+    @Deprecated
     public void setSelectOptions(int option1, int option2) {
         pickerView.setCurrentItems(option1, option2, 0);
     }
 
     /**
      * 设置选中的item位置
-     *
-     * @param option1
-     * @param option2
-     * @param option3
      */
+    @Deprecated
     public void setSelectOptions(int option1, int option2, int option3) {
         pickerView.setCurrentItems(option1, option2, option3);
     }
 
     /**
+     * 设置选中的item位置
+     */
+    public void setCurrentPositions(int option1) {
+        pickerView.setCurrentPositions(option1, 0, 0);
+    }
+
+    /**
+     * 设置选中的item位置
+     */
+    public void setCurrentPositions(int option1, int option2) {
+        pickerView.setCurrentPositions(option1, option2, 0);
+    }
+
+    /**
+     * 设置选中的item位置
+     */
+    public void setCurrentPositions(int option1, int option2, int option3) {
+        pickerView.setCurrentPositions(option1, option2, option3);
+    }
+
+    /**
      * 设置是否循环滚动
-     *
-     * @param cyclic
      */
     public void setCyclic(boolean cyclic) {
         pickerView.setCyclic(cyclic);
@@ -105,7 +126,7 @@ public class CharacterPickerWindow extends PopupWindow implements View.OnClickLi
         String tag = (String) v.getTag();
         if (!tag.equals(TAG_CANCEL)) {
             if (optionsSelectListener != null) {
-                int[] optionsCurrentItems = pickerView.getCurrentItems();
+                int[] optionsCurrentItems = pickerView.getCurrentPositions();
                 optionsSelectListener.onOptionChanged(optionsCurrentItems[0], optionsCurrentItems[1], optionsCurrentItems[2]);
             }
         }

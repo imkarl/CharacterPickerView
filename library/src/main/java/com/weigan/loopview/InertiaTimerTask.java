@@ -2,14 +2,12 @@
 // Jad home page: http://www.geocities.com/kpdus/jad.html
 // Decompiler options: braces fieldsfirst space lnc 
 
-package com.weidongjian.meitu.wheelviewdemo.view;
-
-import java.util.TimerTask;
+package com.weigan.loopview;
 
 // Referenced classes of package com.qingchifan.view:
 //            LoopView
 
-final class InertiaTimerTask extends TimerTask {
+final class InertiaTimerTask implements Runnable {
 
     float a;
     final float velocityY;
