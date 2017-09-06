@@ -36,11 +36,17 @@ repositories {
 - Step 2. 在你的app build.gradle 的 dependencies 中添加依赖
 ```
 dependencies {
-	compile 'com.github.imkarl:CharacterPickerView:v0.2.4'
+	compile 'com.github.imkarl:CharacterPickerView:v0.2.5'
 }
 ```
 
 ## ChangeLog
+
+#### 0.2.5
+- 修复setSelectOptions()无效的bug
+- 修复CharacterPickerWindow弹出时，可以点击到Activity中Button的bug
+- 修复CharacterPickerWindow弹出时，按返回键直接退出Activity的bug
+- 新增setCurrentPosition()、getCurrentPosition()
 
 #### 0.2.4
 - 修复部分情况下选项显示宽度变小的bug
