@@ -57,6 +57,7 @@ public class LoopView extends View {
 
     int textSize;
     int maxTextHeight;
+    private int maxTextSize = -1;
 
     int outerTextColor;
 
@@ -304,6 +305,13 @@ public class LoopView extends View {
         }
     }
 
+    /**
+     * set max text size in dp
+     */
+    public final void setMaxTextSize(float dpVaule) {
+        this.maxTextSize = dp2px(dpVaule);
+    }
+
     public final void setInitPosition(int initPosition) {
         if (initPosition < 0) {
             this.initPosition = 0;
@@ -440,7 +448,10 @@ public class LoopView extends View {
                 // 字体大小自适应
                 String text = drawingStrings[i];
                 int textLength = text.isEmpty() ? 1 : text.length();
-                int textSize = Math.min(this.textSize, itemWidth/(textLength+2));
+                if (maxTextSize == -1) {
+                    maxTextSize = dp2px(35);
+                }
+                final int textSize = Math.min(this.textSize, Math.min(itemWidth/(textLength+2), maxTextSize));
 
                 paintOuterText.setTextSize(textSize);
                 paintCenterText.setTextSize(textSize);
@@ -485,6 +496,11 @@ public class LoopView extends View {
             }
             i++;
         }
+    }
+
+    private final int dp2px(float dpValue) {
+        final float scale = getContext().getResources().getDisplayMetrics().density;
+        return (int) (dpValue * scale + 0.5f);
     }
 
     // text start drawing position

@@ -36,11 +36,16 @@ repositories {
 - Step 2. 在你的app build.gradle 的 dependencies 中添加依赖
 ```
 dependencies {
-	compile 'com.github.imkarl:CharacterPickerView:v0.2.5'
+	compile 'com.github.imkarl:CharacterPickerView:v0.2.6'
 }
 ```
 
 ## ChangeLog
+
+#### 0.2.6
+- 修复某些情况下，字体会变得非常大的bug
+- 新增setMaxTextSize()：用于限制字体最大值
+- 升级编译工具版本
 
 #### 0.2.5
 - 修复setSelectOptions()无效的bug

@@ -14,9 +14,7 @@ import cn.jeesoft.widget.pickerview.OnOptionChangedListener;
 
 /**
  * 地址选择器
- *
- * @version 0.1 king 2015-10
- * @version 0.2 imkarl 2017-9
+ * @author imkarl
  */
 public class OptionsWindowHelper {
 

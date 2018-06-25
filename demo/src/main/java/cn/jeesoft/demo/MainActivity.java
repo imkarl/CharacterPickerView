@@ -35,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
         layoutParams.addRule(RelativeLayout.CENTER_IN_PARENT);
 
         CharacterPickerView pickerView = new CharacterPickerView(this);
+        //pickerView.setMaxTextSize(28);
         layout.addView(pickerView, layoutParams);
 
         //初始化选项数据

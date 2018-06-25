@@ -120,4 +120,11 @@ public class CharacterPickerView extends FrameLayout {
         this.wheelOptions.setOnOptionChangedListener(listener);
     }
 
+    /**
+     * 设置字体最大值
+     */
+    public void setMaxTextSize(float dpValue) {
+        this.wheelOptions.setMaxTextSize(dpValue);
+    }
+
 }

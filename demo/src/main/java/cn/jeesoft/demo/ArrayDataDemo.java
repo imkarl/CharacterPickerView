@@ -8,7 +8,7 @@ import java.util.Map;
 import java.util.Random;
 
 /**
- * @version 0.1 king 2015-11
+ * @author imkarl
  */
 public class ArrayDataDemo {
 
