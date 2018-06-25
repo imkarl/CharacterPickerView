@@ -11,8 +11,7 @@ import android.widget.PopupWindow;
 import java.util.List;
 
 /**
- * @version 0.1 king 2015-11
- * @version 0.2 imkarl 2017-9
+ * @author imkarl
  */
 public class CharacterPickerWindow extends PopupWindow implements View.OnClickListener {
     private final View rootView; // 总的布局
@@ -41,7 +40,7 @@ public class CharacterPickerWindow extends PopupWindow implements View.OnClickLi
         btnSubmit.setOnClickListener(this);
         btnCancel.setOnClickListener(this);
         // ----转轮
-        pickerView = (CharacterPickerView) rootView.findViewById(R.id.j_optionspicker);
+        pickerView = rootView.findViewById(R.id.j_optionspicker);
         setContentView(rootView);
     }
 
@@ -112,6 +111,13 @@ public class CharacterPickerWindow extends PopupWindow implements View.OnClickLi
      */
     public void setCurrentPositions(int option1, int option2, int option3) {
         pickerView.setCurrentPositions(option1, option2, option3);
+    }
+
+    /**
+     * 设置字体最大值
+     */
+    public void setMaxTextSize(float dpValue) {
+        pickerView.setMaxTextSize(dpValue);
     }
 
     /**

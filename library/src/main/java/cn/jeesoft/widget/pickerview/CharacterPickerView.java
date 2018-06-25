@@ -12,8 +12,7 @@ import java.util.List;
 /**
  * 文本选择器
  *
- * @version 0.1 king 2015-11
- * @version 0.2 imkarl 2017-9
+ * @author imkarl
  */
 public class CharacterPickerView extends FrameLayout {
 
