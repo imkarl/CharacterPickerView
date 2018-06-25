@@ -7,8 +7,8 @@ android {
         applicationId "cn.jeesoft.demo"
         minSdkVersion 14
         targetSdkVersion 24
-        versionCode 26
-        versionName "0.2.6"
+        versionCode version_code
+        versionName version_name
     }
     buildTypes {
         release {
