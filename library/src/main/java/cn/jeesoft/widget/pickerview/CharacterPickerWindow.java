@@ -2,6 +2,7 @@ package cn.jeesoft.widget.pickerview;
 
 import android.content.Context;
 import android.content.res.Resources;
+import android.graphics.Typeface;
 import android.graphics.drawable.BitmapDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -125,6 +126,13 @@ public class CharacterPickerWindow extends PopupWindow implements View.OnClickLi
      */
     public void setCyclic(boolean cyclic) {
         pickerView.setCyclic(cyclic);
+    }
+
+    /**
+     * 设置字体
+     */
+    public void setTypeface(Typeface typeface) {
+        pickerView.setTypeface(typeface);
     }
 
     @Override

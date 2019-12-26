@@ -24,9 +24,9 @@ public class ArrayDataDemo {
             for (int j = 0; j < 30; j++) {
                 List<String> data = new ArrayList<>();
                 for (int k = 0; k < 30; k++) {
-                    data.add(getRandomText() + k);
+                    data.add(j + getRandomText());
                 }
-                city.put("一二三四五六七八九" + j, data);
+                city.put(i + "一二三四五六七八九" + j, data);
             }
             DATAs.put("一二三四五六七八九" + i, city);
         }

@@ -1,5 +1,6 @@
 package cn.jeesoft.widget.pickerview;
 
+import android.graphics.Typeface;
 import android.view.View;
 
 import com.weigan.loopview.LoopView;
@@ -156,6 +157,15 @@ final class WheelOptions {
         wvOption1.setLoop(cyclic);
         wvOption2.setLoop(cyclic);
         wvOption3.setLoop(cyclic);
+    }
+
+    /**
+     * 设置字体
+     */
+    public void setTypeface(Typeface typeface) {
+        wvOption1.setTypeface(typeface);
+        wvOption2.setTypeface(typeface);
+        wvOption3.setTypeface(typeface);
     }
 
     @Deprecated

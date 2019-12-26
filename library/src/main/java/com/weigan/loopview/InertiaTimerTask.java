@@ -23,12 +23,11 @@ final class InertiaTimerTask implements Runnable {
     @Override
     public final void run() {
         if (a == Integer.MAX_VALUE) {
-            final int time = 1500;
-            if (Math.abs(velocityY) > time) {
+            if (Math.abs(velocityY) > 2000F) {
                 if (velocityY > 0.0F) {
-                    a = time;
+                    a = 2000F;
                 } else {
-                    a = -time;
+                    a = -2000F;
                 }
             } else {
                 a = velocityY;
@@ -43,7 +42,7 @@ final class InertiaTimerTask implements Runnable {
         LoopView loopview = loopView;
         loopview.totalScrollY = loopview.totalScrollY - i;
         if (!loopView.isLoop) {
-            float itemHeight = loopView.lineSpacingMultiplier * loopView.maxTextHeight;
+            float itemHeight = loopView.lineSpacingMultiplier * loopView.itemTextHeight;
             if (loopView.totalScrollY <= (int) ((float) (-loopView.initPosition) * itemHeight)) {
                 a = 40F;
                 loopView.totalScrollY = (int) ((float) (-loopView.initPosition) * itemHeight);

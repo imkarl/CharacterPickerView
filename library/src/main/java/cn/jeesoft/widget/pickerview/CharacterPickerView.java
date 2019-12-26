@@ -2,6 +2,7 @@ package cn.jeesoft.widget.pickerview;
 
 import android.annotation.TargetApi;
 import android.content.Context;
+import android.graphics.Typeface;
 import android.os.Build;
 import android.util.AttributeSet;
 import android.view.View;
@@ -86,6 +87,13 @@ public class CharacterPickerView extends FrameLayout {
      */
     public void setCyclic(boolean cyclic) {
         wheelOptions.setCyclic(cyclic);
+    }
+
+    /**
+     * 设置字体
+     */
+    public void setTypeface(Typeface typeface) {
+        wheelOptions.setTypeface(typeface);
     }
 
     @Deprecated
